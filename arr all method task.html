@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //question no1
+        // GET all the countries from Asia continent /region using Filter function.
+        var request=new XMLHttpRequest();
+        request.open('GET','https://restcountries.com/v3.1/all','true')
+        request.send();
+        request.onload=function (){
+            var countryData=JSON.parse(this.response);
+            const asia=countryData.filter((element)=>{
+                if(element.region==='Asia'){
+                    returnelement.name;
+                }
+            })
+            console.log(asia);}
+        //Question 2
+        //GET all the countries with population of less than 2 lacs using filter method.
+        var request=new XMLHttpRequest();
+        request.open('GET','https://restcountries.com/v3.1/all','true')
+        request.send();
+        request.onload=function (){
+            var countryData=JSON.parse(this.response);
+            const population=countryData.filter((element)=>{
+                return element.population<200000;
+            })
+           consol.log(population);
+        }
+         //Question 3
+         //print the following detail name,capital,flag using foreach function.
+         var request=new XMLHttpRequest();
+        request.open('GET','https://restcountries.com/v3.1/all','true')
+        request.send();
+        request.onload=function (){
+            var countryData=JSON.parse(this.response);
+            countryData.foreach((element)=>{
+                console.log(element.name,element.capital,element.flag);
+            })
+        }
+        //Question no 4
+        //Print the total population of countries using reduce function.
+        var request=new XMLHttpRequest();
+        request.open('GET','https://restcountries.com/v3.1/all','true')
+        request.send();
+        request.onload=function (){
+            var countryData=JSON.parse(this.response);
+            const population=countryData.reduce((acc,element)=>{
+                return acc+element.population;
+            })
+            console.log (population);
+        }
+        //Question no 5
+        //Print the country which use US Dollars as currency.
+        var request=new XMLHttpRequest();
+        request.open('GET','https://restcountries.com/v3.1/all','true')
+        request.send();
+        request.onload=function (){
+            var countryData=JSON.parse(this.response);
+            var data =JSON.parse(this.response);
+            var currency=[];
+            for(i=0;i<data.length;i++){
+                if(data[i].currencies[0].code==="USD")
+                {
+                    console.log("name",data[i].name,"==>",data[i].currencies[0])
+                }       
+            }
+        }
+
+
+            
+         
+        
+        
+    
+    
+
+
+    
+
+    </script>
+</body>
+</html>
